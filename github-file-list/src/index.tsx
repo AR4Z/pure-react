@@ -75,9 +75,20 @@ FileName.propTypes = {
     file: PropTypes.object.isRequired
 };
 
+const CommitMessage = ({ commit }: { commit: {message: string} }) => (
+    <td className="commit-message">
+        {commit.message}
+    </td>
+);
+
+CommitMessage.propTypes = {
+    commit: PropTypes.object.isRequired
+};
+
 const FileListItem = ({ file }: { file: file }) => (
     <tr className="file-list-item" key={file.id}>
         <FileName file={file} />
+        <CommitMessage commit={file.latestCommit}/>
     </tr>
 );
 
